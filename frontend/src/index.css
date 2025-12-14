@@ -1,0 +1,99 @@
+/* ===== Root Theme Variables ===== */
+:root {
+  font-family: "Segoe UI", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  --primary-color: #ff9800;
+  --primary-dark: #e68900;
+  --text-dark: #3d2c00;
+  --text-light: #666;
+  --bg-main: #fff3e0;
+  --bg-card: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Body ===== */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+  color: var(--text-dark);
+}
+
+/* ===== Links ===== */
+a {
+  font-weight: 500;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+/* ===== Headings ===== */
+h1 {
+  font-size: 2.8em;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+  color: #4e342e;
+}
+
+/* ===== Buttons ===== */
+button {
+  border-radius: 8px;
+  border: none;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===== Inputs ===== */
+input,
+textarea {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* ===== Utility ===== */
+.text-center {
+  text-align: center;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.2em;
+  }
+}

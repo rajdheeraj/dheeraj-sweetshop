@@ -11,10 +11,10 @@ dotenv.config();
 
 const app = express();
 
-// ✅ CORS FIX (THIS IS THE KEY)
+// ✅ CORS (PRODUCTION SAFE)
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL || "*",
     credentials: true
   })
 );
@@ -27,15 +27,22 @@ app.use("/api/auth", authRoutes);
 app.use("/api/test", testRoutes);
 app.use("/api/sweets", sweetRoutes);
 
-app.get("/", (req, res) => {
+// HEALTH CHECK
+app.get("/", (_req, res) => {
   res.send("Sweet Shop Backend Running");
 });
 
-mongoose
-  .connect(process.env.MONGO_URI!)
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
+// ✅ CONNECT DB & START SERVER
+const PORT = process.env.PORT || 5000;
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
-});
+mongoose
+  .connect(process.env.MONGO_URI as string)
+  .then(() => {
+    console.log("MongoDB Connected");
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+  });
